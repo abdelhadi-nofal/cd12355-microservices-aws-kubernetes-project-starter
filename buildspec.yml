@@ -8,20 +8,17 @@ phases:
       - pwd
       - echo "Listing files..."
       - ls -la
-      - cd /codebuild/output/src3227723968/src/github.com/abdelhadi-nofal/cd12355-microservices-aws-kubernetes-project-starter
-      - ls -la  # Confirm Dockerfile exists here
+      - cd /codebuild/output/src2039049931/src/github.com/abdelhadi-nofal/cd12355-microservices-aws-kubernetes-project-starter
+      - ls -la  # Confirm Dockerfile exists
 
   pre_build:
     commands:
-      - echo "Logging in to Docker Hub..."
       - echo "$DOCKER_HUB_TOKEN" | docker login -u "$DOCKER_HUB_USER" --password-stdin
 
   build:
     commands:
-      - echo "Building Docker image from root..."
       - docker build -t hadinofal/coworking-space:latest .
 
   post_build:
     commands:
-      - echo "Pushing to Docker Hub..."
       - docker push hadinofal/coworking-space:latest
