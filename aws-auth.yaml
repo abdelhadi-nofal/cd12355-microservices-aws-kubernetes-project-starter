@@ -1,0 +1,24 @@
+apiVersion: v1
+data:
+  mapRoles: |
+    - groups:
+      - system:bootstrappers
+      - system:nodes
+      rolearn: arn:aws:iam::618888330540:role/eks-worker-role
+      username: system:node:{{EC2PrivateDNSName}}
+  mapUsers: |2-
+
+    - userarn: arn:aws:iam::618888330540:user/myUdacity
+      username: myUdacity
+      groups:
+        - system:masters
+kind: ConfigMap
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","data":{"mapUsers":"\n- userarn: arn:aws:iam::618888330540:user/myUdacity\n  username: myUdacity\n  groups:\n    - system:masters"},"kind":"ConfigMap","metadata":{"annotations":{},"creationTimestamp":null,"name":"aws-auth","namespace":"kube-system"}}
+  creationTimestamp: "2025-05-16T16:15:06Z"
+  name: aws-auth
+  namespace: kube-system
+  resourceVersion: "3362"
+  uid: 61ff7dcf-a8a9-497f-94a8-d1c807a88ca5

@@ -1,0 +1,26 @@
+{
+  "name": "coworking-build",
+  "description": "Build and push Docker image to Docker Hub",
+  "source": {
+    "type": "GITHUB",
+    "location": "https://github.com/abdelhadi-nofal/cd12355-microservices-aws-kubernetes-project-starter ",
+    "auth": {
+      "type": "OAUTH"
+    }
+  },
+  "artifacts": {
+    "type": "NO_ARTIFACTS"
+  },
+  "environment": {
+    "type": "LINUX_CONTAINER",
+    "image": "aws/codebuild/amazonlinux2-x86_64-standard:3.0",
+    "computeType": "BUILD_GENERAL1_SMALL"
+  },
+  "serviceRole": "arn:aws:iam::618888330540:role/eks-cluster-role",
+  "logsConfig": {
+    "cloudWatchLogs": {
+      "status": "ENABLED",
+      "groupName": "/aws/codebuild/coworking-build"
+    }
+  }
+}
