@@ -1,0 +1,23 @@
+# buildspec.yml
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Docker Hub...
+      - docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_TOKEN
+
+  build:
+    commands:
+      - echo Building Docker image...
+      - cd analytics
+      - docker build -t hadinofal/coworking-space:latest .
+
+  post_build:
+    commands:
+      - echo Pushing to Docker Hub...
+      - docker push hadinofal/coworking-space:latest
+
+artifacts:
+  files:
+    - '**/*'
