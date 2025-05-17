@@ -1,13 +1,6 @@
 version: 0.2
 
 phases:
-  install:
-    commands:
-      - echo "Debug: Current directory"
-      - pwd
-      - echo "Listing files..."
-      - ls -la
-
   pre_build:
     commands:
       - echo "$DOCKER_HUB_TOKEN" | docker login -u "$DOCKER_HUB_USER" --password-stdin
