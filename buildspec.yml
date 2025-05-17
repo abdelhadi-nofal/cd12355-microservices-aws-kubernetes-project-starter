@@ -1,3 +1,4 @@
+# buildspec.yml
 version: 0.2
 
 phases:
@@ -7,8 +8,10 @@ phases:
 
   build:
     commands:
+      - echo "Building Docker image from root..."
       - docker build -t hadinofal/coworking-space:latest .
 
   post_build:
     commands:
+      - echo "Pushing to Docker Hub..."
       - docker push hadinofal/coworking-space:latest
