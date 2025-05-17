@@ -2,16 +2,22 @@
 version: 0.2
 
 phases:
+  install:
+    commands:
+      - echo "Debug: Current directory"
+      - pwd
+      - echo "Listing files in build context..."
+      - ls -la $CODEBUILD_SRC_DIR
+
   pre_build:
     commands:
       - echo "$DOCKER_HUB_TOKEN" | docker login -u "$DOCKER_HUB_USER" --password-stdin
 
   build:
     commands:
-      - echo "Building Docker image from root..."
+      - cd $CODEBUILD_SRC_DIR
       - docker build -t hadinofal/coworking-space:latest .
 
   post_build:
     commands:
-      - echo "Pushing to Docker Hub..."
       - docker push hadinofal/coworking-space:latest
