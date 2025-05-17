@@ -4,18 +4,17 @@ version: 0.2
 phases:
   pre_build:
     commands:
-      - echo Logging in to Docker Hub...
-      - docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_TOKEN
+      - echo "Logging in to Docker Hub..."
+      - echo "$DOCKER_HUB_TOKEN" | docker login -u "$DOCKER_HUB_USER" --password-stdin
 
   build:
     commands:
-      - echo Building Docker image...
-      - cd analytics
+      - echo "Building Docker image from root..."
       - docker build -t hadinofal/coworking-space:latest .
 
   post_build:
     commands:
-      - echo Pushing to Docker Hub...
+      - echo "Pushing to Docker Hub..."
       - docker push hadinofal/coworking-space:latest
 
 artifacts:
