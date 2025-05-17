@@ -1,9 +1,9 @@
-# Dockerfile (in repo root)
+# Dockerfile
 FROM --platform=linux/amd64 python:3.9-slim
 WORKDIR /app
-COPY analytics/requirements.txt .  # Copy requirements from analytics/
+COPY requirements.txt .  # requirements.txt is in root
 RUN python -m venv /opt/venv && \
     /opt/venv/bin/pip install --no-cache-dir -r requirements.txt
-COPY analytics/ .                 # Copy all files from analytics/
+COPY app.py .  # app.py is also in root
 EXPOSE 5153
 CMD ["/opt/venv/bin/python", "app.py"]
