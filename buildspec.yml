@@ -8,8 +8,6 @@ phases:
       - pwd
       - echo "Listing files..."
       - ls -la
-      - cd /codebuild/output/src2227431548/src/github.com/abdelhadi-nofal/cd12355-microservices-aws-kubernetes-project-starter
-      - ls -la  # Confirm Dockerfile exists here
 
   pre_build:
     commands:
