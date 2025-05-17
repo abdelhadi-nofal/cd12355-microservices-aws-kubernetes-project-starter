@@ -2,6 +2,15 @@
 version: 0.2
 
 phases:
+  install:
+    commands:
+      - echo "Debug: Current directory"
+      - pwd
+      - echo "Listing files..."
+      - ls -la
+      - cd /codebuild/output/src3227723968/src/github.com/abdelhadi-nofal/cd12355-microservices-aws-kubernetes-project-starter
+      - ls -la  # Confirm Dockerfile exists here
+
   pre_build:
     commands:
       - echo "Logging in to Docker Hub..."
@@ -16,7 +25,3 @@ phases:
     commands:
       - echo "Pushing to Docker Hub..."
       - docker push hadinofal/coworking-space:latest
-
-artifacts:
-  files:
-    - '**/*'
