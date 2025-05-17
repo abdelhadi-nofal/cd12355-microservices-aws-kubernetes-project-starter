@@ -3,7 +3,7 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo "Debug: Current directory"
+      - echo "Debug: Current directory"  # Ensure hyphen + space
       - pwd
       - echo "Listing files..."
       - ls -la
